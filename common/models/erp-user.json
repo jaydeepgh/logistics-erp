@@ -1,0 +1,47 @@
+{
+  "name": "ERPUser",
+  "plural": "Users",
+  "base": "User",
+  "idInjection": true,
+  "strictDelete": "true",
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "realm": false,
+    "credentials": null,
+    "challenges": null,
+    "emailVerified": false,
+    "status": false,
+    "lastUpdated": false
+  },
+  "validations": [],
+  "relations": {
+    "demo": {
+      "type": "belongsTo",
+      "model": "Demo",
+      "foreignKey": "demoId"
+    },
+    "roles": {
+      "type": "hasMany",
+      "model": "Role",
+      "foreignKey": "principalId",
+      "through": "RoleMapping"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "__get__roles"
+    }
+  ],
+  "methods": {}
+}

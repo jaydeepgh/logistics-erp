@@ -1,0 +1,12 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "postgresql",
+    "database": "foo",
+    "host": "jumbo.db.elephantsql.com",
+    "port": "5432",
+    "username": "foo",
+    "password": "password",
+    "max": 3
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "Supplier",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "strictDelete": "true",
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "products": {
+      "type": "hasMany",
+      "model": "Product",
+      "foreignKey": "supplierId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "supplychainmanager",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

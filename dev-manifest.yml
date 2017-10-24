@@ -1,0 +1,10 @@
+---
+declared-services:
+  dev-logistics-wizard-erp-db:
+    label: elephantsql
+    plan: turtle
+services:
+  - dev-logistics-wizard-erp-db
+applications:
+  - name: dev-logistics-wizard-erp
+    memory: 256M

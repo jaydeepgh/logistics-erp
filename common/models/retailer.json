@@ -1,0 +1,71 @@
+{
+  "name": "Retailer",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "strictDelete": "true",
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "demoId": {
+      "required": true,
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "manager": {
+      "type": "belongsTo",
+      "model": "ERPUser",
+      "foreignKey": "managerId"
+    },
+    "retailerAddress": {
+      "type": "embedsOne",
+      "model": "Address",
+      "property": "address",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "demo": {
+      "type": "belongsTo",
+      "model": "Demo",
+      "foreignKey": "demoId"
+    },
+    "inventories": {
+      "type": "hasMany",
+      "model": "Inventory",
+      "polymorphic": {
+        "as": "location",
+        "foreignKey": "locationId",
+        "discriminator": "locationType"
+      }
+    }
+  },
+  "mixins": {
+    "Isolated": {}
+  },
+  "hidden": ["demoId"],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "supplychainmanager",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "retailstoremanager",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

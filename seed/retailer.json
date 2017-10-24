@@ -1,0 +1,42 @@
+[
+  {
+    "id": "201",
+    "address": {
+      "city": "Raleigh",
+      "state": "North Carolina",
+      "country": "US",
+      "latitude": 35.71,
+      "longitude": -78.63
+    }
+  },
+  {
+    "id": "202",
+    "address": {
+      "city": "Austin",
+      "state": "Texas",
+      "country": "US",
+      "latitude": 30.22,
+      "longitude": -97.74
+    }
+  },
+  {
+    "id": "203",
+    "address": {
+      "city": "Phoenix",
+      "state": "Arizona",
+      "country": "US",
+      "latitude": 33.44,
+      "longitude": -112.07
+    }
+  },
+  {
+    "id": "204",
+    "address": {
+      "city": "Boston",
+      "state": "Massachusetts",
+      "country": "US",
+      "latitude": 42.31,
+      "longitude": -71.07
+    }
+  }
+]

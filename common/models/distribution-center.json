@@ -1,0 +1,61 @@
+{
+  "name": "DistributionCenter",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "strictDelete": "true",
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "dcAddress": {
+      "type": "embedsOne",
+      "model": "Address",
+      "property": "address",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "dcContact": {
+      "type": "embedsOne",
+      "model": "Contact",
+      "property": "contact",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "inventories": {
+      "type": "hasMany",
+      "model": "Inventory",
+      "polymorphic": {
+        "as": "location",
+        "foreignKey": "locationId",
+        "discriminator": "locationType"
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "supplychainmanager",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "retailstoremanager",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
